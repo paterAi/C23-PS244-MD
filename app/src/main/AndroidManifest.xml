@@ -3,8 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +21,25 @@
         android:theme="@style/Theme.PaterAI"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.market.product.detail.DetailProductMarketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.market.order.detail.DetailOrderMarketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.market.cart.CartMarketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.market.MarketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.welcome.WelcomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.AuthenticationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

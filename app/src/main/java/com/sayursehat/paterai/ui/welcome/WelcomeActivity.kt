@@ -1,11 +1,12 @@
-package com.sayursehat.paterai
+package com.sayursehat.paterai.ui.welcome
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.sayursehat.paterai.R
 
-class MainActivity : AppCompatActivity() {
+class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_welcome)
     }
 }
