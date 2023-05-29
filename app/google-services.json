@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "435494817968",
+    "project_id": "capstone-projek",
+    "storage_bucket": "capstone-projek.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435494817968:android:852264ccb634d518a66b75",
+        "android_client_info": {
+          "package_name": "com.sayursehat.paterai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "435494817968-o6po8qlma2mpp73coj3893v0eluq3av6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sayursehat.paterai",
+            "certificate_hash": "c951f69702ca319a86a7a2b94c273c7c9dd771a7"
+          }
+        },
+        {
+          "client_id": "435494817968-a6kuiehnqbqd0hb2umaclgdvh407qb55.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC28Y8gnhA7-S5_0jh6djCS0r6DWspsNQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "435494817968-a6kuiehnqbqd0hb2umaclgdvh407qb55.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
