@@ -21,6 +21,10 @@
         android:theme="@style/Theme.PaterAI"
         tools:targetApi="31">
         <activity
+            android:name=".ui.market.MarketActivity"
+            android:exported="false"
+            android:label="@string/title_activity_market" />
+        <activity
             android:name=".ui.market.product.detail.DetailProductMarketActivity"
             android:exported="false" />
         <activity
@@ -28,9 +32,6 @@
             android:exported="false" />
         <activity
             android:name=".ui.market.cart.CartMarketActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.market.MarketActivity"
             android:exported="false" />
         <activity
             android:name=".ui.welcome.WelcomeActivity"
