@@ -21,7 +21,6 @@ class MarketActivity : AppCompatActivity() {
         binding = ActivityMarketBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         val navView: BottomNavigationView = binding.bottomNavMarket
 
         val navController = findNavController(R.id.nav_host_fragment_activity_market)

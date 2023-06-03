@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="@color/tertiary"
+    app:cardCornerRadius="10dp"
+    app:contentPadding="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_vegetable"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_name_vegetable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Food Name"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/img_vegetable"
+            app:layout_constraintTop_toBottomOf="@+id/img_vegetable" />
+
+        <TextView
+            android:id="@+id/tv_price_vegetable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp 19.500"
+            android:textColor="@color/primary"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_name_vegetable"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_vegetable" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Palembang"
+            android:textColor="@color/grey"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/img_icon_location"
+            app:layout_constraintTop_toBottomOf="@+id/tv_price_vegetable" />
+
+        <ImageView
+            android:id="@+id/img_icon_location"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_location"
+            app:layout_constraintStart_toStartOf="@+id/tv_price_vegetable"
+            app:layout_constraintTop_toTopOf="@+id/tv_location"
+            app:srcCompat="@drawable/ic_location_on_24" />
+
+        <Button
+            android:id="@+id/btn_add_product"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:backgroundTint="@color/primary"
+            android:contentDescription="Add Product"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            app:cornerRadius="2dp"
+            app:icon="@drawable/ic_add_24"
+            app:iconGravity="textTop"
+            app:iconSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/img_vegetable"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -1,6 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.market.home.HomeMarketFragment" />
+    android:clipToPadding="false"
+    android:paddingBottom="100dp"
+    tools:context=".ui.market.home.HomeMarketFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_home_user"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_home_name_user"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_home_name_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="Name"
+            app:layout_constraintBottom_toTopOf="@+id/img_home_location"
+            app:layout_constraintEnd_toStartOf="@+id/img_home_user"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/img_home_user"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <ImageView
+            android:id="@+id/img_home_location"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ic_location_on_24"
+            app:layout_constraintBottom_toBottomOf="@+id/img_home_user"
+            app:layout_constraintStart_toStartOf="@+id/tv_home_name_user"
+            app:layout_constraintTop_toBottomOf="@+id/tv_home_name_user" />
+
+        <TextView
+            android:id="@+id/tv_home_location"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            android:text="Location"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_home_location"
+            app:layout_constraintStart_toEndOf="@+id/img_home_location"
+            app:layout_constraintTop_toTopOf="@+id/img_home_location" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_layout_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:hint="Find vegetable"
+            app:boxBackgroundColor="@color/tertiary"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/img_home_user"
+            app:layout_constraintStart_toStartOf="@+id/img_home_location"
+            app:layout_constraintTop_toBottomOf="@+id/img_home_user"
+            app:startIconDrawable="?android:attr/actionModeWebSearchDrawable">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/img_home_carousel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/dummy_carousel"
+            app:layout_constraintEnd_toEndOf="@+id/edt_layout_home"
+            app:layout_constraintStart_toStartOf="@+id/edt_layout_home"
+            app:layout_constraintTop_toBottomOf="@+id/edt_layout_home" />
+
+        <TextView
+            android:id="@+id/tv_home_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Special hari ini!"
+            app:layout_constraintStart_toStartOf="@+id/img_home_carousel"
+            app:layout_constraintTop_toBottomOf="@+id/img_home_carousel" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_home_product"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:layout_marginTop="13dp"
+            app:layout_constraintEnd_toEndOf="@+id/img_home_carousel"
+            app:layout_constraintStart_toStartOf="@+id/tv_home_1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_home_1"
+            tools:listitem="@layout/item_market_home" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
