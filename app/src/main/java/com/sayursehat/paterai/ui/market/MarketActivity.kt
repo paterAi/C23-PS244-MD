@@ -8,6 +8,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.MaterialShapeDrawable
 import com.sayursehat.paterai.R
 import com.sayursehat.paterai.databinding.ActivityMarketBinding
 
@@ -33,6 +35,15 @@ class MarketActivity : AppCompatActivity() {
                 R.id.navigation_profile
             )
         )
+
+        val radius = resources.getDimension(R.dimen.corner_radius_bottom_bar)
+        val bottomBarBackground = binding.bottomNavAppbar.background as MaterialShapeDrawable
+
+        bottomBarBackground.shapeAppearanceModel = bottomBarBackground.shapeAppearanceModel
+            .toBuilder()
+            .setTopLeftCorner(CornerFamily.ROUNDED, radius)
+            .setTopRightCorner(CornerFamily.ROUNDED, radius)
+            .build()
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
