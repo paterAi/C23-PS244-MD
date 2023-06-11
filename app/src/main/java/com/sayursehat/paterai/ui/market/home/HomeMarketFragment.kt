@@ -1,5 +1,6 @@
 package com.sayursehat.paterai.ui.market.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.sayursehat.paterai.adapter.ListHomeProductAdapter
 import com.sayursehat.paterai.databinding.FragmentHomeMarketBinding
 import com.sayursehat.paterai.model.InitialDataDummy
 import com.sayursehat.paterai.model.Vegetable
+import com.sayursehat.paterai.ui.market.maps.MapsActivity
 
 class HomeMarketFragment : Fragment() {
 
@@ -29,15 +31,23 @@ class HomeMarketFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.hide()
         setupView()
+        setupAction()
     }
 
-    private fun setupView(){
+    private fun setupView() {
         val layoutManager = GridLayoutManager(activity, 2)
         binding?.rvHomeProduct?.layoutManager = layoutManager
         setListProductData(InitialDataDummy.getVegetables())
     }
 
-    private fun setListProductData(listProduct: List<Vegetable>){
+    private fun setupAction() {
+        binding?.tvHomeLocation?.setOnClickListener {
+            val intent = Intent(activity, MapsActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setListProductData(listProduct: List<Vegetable>) {
         val adapter = ListHomeProductAdapter(listProduct)
         binding?.rvHomeProduct?.adapter = adapter
     }
