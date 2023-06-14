@@ -17,5 +17,11 @@ class Utils {
             return format.format(money)
 
         }
+
+        fun convertPriceWithRange(priceLowest: Number, priceHighest: Number): String {
+            val range = "${convertToIDRFormat(priceLowest)} - ${convertToIDRFormat(priceHighest)}"
+            return range
+
+        }
     }
 }

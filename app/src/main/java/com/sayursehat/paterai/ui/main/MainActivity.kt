@@ -1,37 +1,63 @@
 package com.sayursehat.paterai.ui.main
 
 import android.content.Intent
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
+import android.util.Log
 import com.sayursehat.paterai.R
-import com.sayursehat.paterai.ui.auth.AuthenticationActivity
 import com.sayursehat.paterai.ui.market.MarketActivity
+import com.sayursehat.paterai.ui.market.camera.CameraMarketActivity
+import com.sayursehat.paterai.ui.market.cart.CartMarketActivity
+import com.sayursehat.paterai.ui.market.product.ProductMarketFragment
+import com.sayursehat.paterai.ui.market.product.detail.DetailProductMarketActivity
+import com.sayursehat.paterai.ui.welcome.WelcomeActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity() : AppCompatActivity(), Parcelable {
+    constructor(parcel: Parcel) : this() {
+    }
 
-    private lateinit var auth: FirebaseAuth
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<MainActivity> {
+        override fun createFromParcel(parcel: Parcel): MainActivity {
+            return MainActivity(parcel)
+        }
+
+        override fun newArray(size: Int): Array<MainActivity?> {
+            return arrayOfNulls(size)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        auth = Firebase.auth
-    }
+        val intent = Intent(this, MarketActivity::class.java)
+        startActivity(intent)
+        finish()
 
-    override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            val intent = Intent(this, MarketActivity::class.java)
-            startActivity(intent)
-            finish()
-        } else {
-            val intent = Intent(this, AuthenticationActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        val intent = Intent(this, WelcomeActivity::class.java)
+//        startActivity(intent)
+//        finish()
 
+//        val intent = Intent(this, CartMarketActivity::class.java)
+//        startActivity(intent)
+//        finish()
+//
+//        val intent = Intent(this, CameraMarketActivity::class.java)
+//        startActivity(intent)
+//        finish()
+//
+//        val intent = Intent(this, DetailProductMarketActivity::class.java)
+//        startActivity(intent)
+//        finish()
     }
 }

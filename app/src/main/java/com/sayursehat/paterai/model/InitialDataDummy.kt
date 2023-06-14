@@ -20,4 +20,19 @@ object InitialDataDummy {
             Vegetable("Kentang", R.drawable.dummy_kentang, 20500, "1 kg")
         )
     }
+
+    fun getProducts(): List<Product> {
+        return listOf(
+            Product("Wortel", R.drawable.dummy_wortel, 11000, 19550, "32"),
+            Product("Brokoli", R.drawable.dummy_brokoli, 12000, 24000, "24"),
+            Product("Kangkung", R.drawable.dummy_kangkung, 10000, 18000, "15"),
+            Product("Kentang", R.drawable.dummy_kentang, 8000, 20500, "10")
+        )
+    }
+
+    fun getCart(): List<Cart> {
+        return listOf(
+            Cart("Go Mart", "Cipadung", 1, getVegetables())
+        )
+    }
 }

@@ -62,7 +62,7 @@
             app:srcCompat="@drawable/ic_location_on_24" />
 
         <Button
-            android:id="@+id/btn_add_product"
+            android:id="@+id/tv_store"
             style="@style/Widget.Material3.Button.IconButton.Filled"
             android:layout_width="20dp"
             android:layout_height="20dp"
