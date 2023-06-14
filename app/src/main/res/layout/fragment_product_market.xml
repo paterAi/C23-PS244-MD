@@ -66,6 +66,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="Toko Asep"
+                    android:textColor="@color/white"
                     android:textSize="10sp" />
 
             </LinearLayout>
@@ -104,6 +105,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="Toko Asep"
+                    android:textColor="@color/white"
                     android:textSize="10sp" />
 
             </LinearLayout>
@@ -142,6 +144,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="Toko Asep"
+                    android:textColor="@color/white"
                     android:textSize="10sp" />
 
             </LinearLayout>
@@ -181,6 +184,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="Toko Asep"
+                    android:textColor="@color/white"
                     android:textSize="10sp" />
 
             </LinearLayout>
@@ -190,10 +194,10 @@
             android:id="@+id/rv_product"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:overScrollMode="never"
             android:layout_marginTop="13dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:overScrollMode="never"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cv_nearby_store_1"
             tools:listitem="@layout/item_market_product" />
 
