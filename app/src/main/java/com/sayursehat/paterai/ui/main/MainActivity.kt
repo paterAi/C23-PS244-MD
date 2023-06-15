@@ -9,6 +9,8 @@ import android.util.Log
 import com.sayursehat.paterai.R
 import com.sayursehat.paterai.ui.market.MarketActivity
 import com.sayursehat.paterai.ui.market.camera.CameraMarketActivity
+import com.sayursehat.paterai.ui.market.camera.CameraResultMarketActivity
+import com.sayursehat.paterai.ui.market.camera.TestModelActivity
 import com.sayursehat.paterai.ui.market.cart.CartMarketActivity
 import com.sayursehat.paterai.ui.market.product.ProductMarketFragment
 import com.sayursehat.paterai.ui.market.product.detail.DetailProductMarketActivity
@@ -40,9 +42,17 @@ class MainActivity() : AppCompatActivity(), Parcelable {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val intent = Intent(this, MarketActivity::class.java)
+//        val intent = Intent(this, CameraResultMarketActivity::class.java)
+//        startActivity(intent)
+//        finish()
+
+        val intent = Intent(this, TestModelActivity::class.java)
         startActivity(intent)
         finish()
+
+//        val intent = Intent(this, MarketActivity::class.java)
+//        startActivity(intent)
+//        finish()
 
 //        val intent = Intent(this, WelcomeActivity::class.java)
 //        startActivity(intent)

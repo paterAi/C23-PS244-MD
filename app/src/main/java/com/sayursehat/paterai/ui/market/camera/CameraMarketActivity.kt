@@ -6,6 +6,9 @@ import com.sayursehat.paterai.R
 import android.Manifest
 import android.content.ContentValues
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.os.Build
 import android.provider.MediaStore
 import androidx.camera.core.ImageCapture
@@ -32,9 +35,15 @@ import androidx.camera.video.QualitySelector
 import androidx.camera.video.VideoRecordEvent
 import androidx.camera.view.PreviewView
 import androidx.core.content.PermissionChecker
+import com.google.firebase.ml.modeldownloader.CustomModel
+import com.google.firebase.ml.modeldownloader.CustomModelDownloadConditions
+import com.google.firebase.ml.modeldownloader.DownloadType
+import com.google.firebase.ml.modeldownloader.FirebaseModelDownloader
 import com.sayursehat.paterai.databinding.ActivityCameraMarketBinding
 import com.sayursehat.paterai.databinding.ActivityMainBinding
+import org.tensorflow.lite.Interpreter
 import java.nio.ByteBuffer
+import java.nio.ByteOrder
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -122,14 +131,14 @@ class CameraMarketActivity : AppCompatActivity() {
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
-                    Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
+//                    Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
                 }
 
                 override fun
                         onImageSaved(output: ImageCapture.OutputFileResults) {
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, msg)
+//                    Log.d(TAG, msg)
                 }
             }
         )
@@ -200,5 +209,6 @@ class CameraMarketActivity : AppCompatActivity() {
                 }
             }.toTypedArray()
     }
+
 }
 

@@ -20,4 +20,8 @@
     <string name="near_you">Near You</string>
     <string name="content_description_img_vegetable">img vegetable</string>
     <string name="checkout">Checkout</string>
+    <string name="content_description_retry">retry</string>
+    <string name="retry">Retry</string>
+    <string name="ok">OK</string>
+    <string name="vegetable_not_detected">Sayur tidak terdeteksi</string>
 </resources>
