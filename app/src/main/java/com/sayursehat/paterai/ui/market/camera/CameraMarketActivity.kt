@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sayursehat.paterai.R
 import android.Manifest
 import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import androidx.camera.core.ImageCapture
@@ -46,9 +48,6 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.text.SimpleDateFormat
 import java.util.Locale
-
-typealias LumaListener = (luma: Double) -> Unit
-
 
 class CameraMarketActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityCameraMarketBinding
@@ -137,8 +136,12 @@ class CameraMarketActivity : AppCompatActivity() {
                 override fun
                         onImageSaved(output: ImageCapture.OutputFileResults) {
                     val msg = "Photo capture succeeded: ${output.savedUri}"
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-//                    Log.d(TAG, msg)
+
+                    // Pindah ke halaman baru setelah memotret
+                    val intent =
+                        Intent(this@CameraMarketActivity, CameraResultMarketActivity::class.java)
+                    intent.putExtra("imageUri", output.savedUri.toString())
+                    startActivity(intent)
                 }
             }
         )

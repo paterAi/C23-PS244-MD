@@ -3,6 +3,7 @@ package com.sayursehat.paterai.ui.market.camera
 import android.content.Context
 import android.graphics.Bitmap
 import android.media.Image
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.AttributeSet
@@ -28,7 +29,10 @@ class CameraResultMarketActivity : AppCompatActivity() {
         viewBinding = ActivityCameraResultMarketBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-//        viewBinding.imgCaptureResult.setImageBitmap(image)
+        val imageUri = getIntent().getStringExtra("imageUri")
+
+        val image = Uri.parse(imageUri)
+        viewBinding.imgCaptureResult.setImageURI(image)
 
         viewBinding.btnBackCamera.setOnClickListener {
             finish()
@@ -47,7 +51,6 @@ class CameraResultMarketActivity : AppCompatActivity() {
             viewBinding.btnRetry.visibility = View.INVISIBLE
             viewBinding.btnOk.isEnabled = false
             viewBinding.btnOk.visibility = View.INVISIBLE
-
         }
     }
 }

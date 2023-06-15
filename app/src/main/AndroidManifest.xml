@@ -35,7 +35,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.market.camera.CameraMarketActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.market.MarketActivity"
             android:exported="false"

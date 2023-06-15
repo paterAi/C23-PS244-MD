@@ -46,9 +46,9 @@ class MainActivity() : AppCompatActivity(), Parcelable {
 //        startActivity(intent)
 //        finish()
 
-        val intent = Intent(this, TestModelActivity::class.java)
-        startActivity(intent)
-        finish()
+//        val intent = Intent(this, TestModelActivity::class.java)
+//        startActivity(intent)
+//        finish()
 
 //        val intent = Intent(this, MarketActivity::class.java)
 //        startActivity(intent)
@@ -62,9 +62,9 @@ class MainActivity() : AppCompatActivity(), Parcelable {
 //        startActivity(intent)
 //        finish()
 //
-//        val intent = Intent(this, CameraMarketActivity::class.java)
-//        startActivity(intent)
-//        finish()
+        val intent = Intent(this, CameraMarketActivity::class.java)
+        startActivity(intent)
+        finish()
 //
 //        val intent = Intent(this, DetailProductMarketActivity::class.java)
 //        startActivity(intent)

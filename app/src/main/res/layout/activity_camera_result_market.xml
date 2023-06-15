@@ -25,18 +25,18 @@
     <ImageView
         android:id="@+id/img_capture_result"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.40"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toTopOf="@+id/tv_capture_result"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back_camera" />
 
     <Button
         android:id="@+id/btn_retry"
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:contentDescription="@string/content_description_retry"
         android:padding="20dp"
         android:text="@string/retry"
@@ -52,7 +52,7 @@
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:contentDescription="@string/content_description_retry"
         android:padding="20dp"
         android:text="@string/ok"
@@ -67,7 +67,7 @@
         android:id="@+id/tv_capture_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="180dp"
+        android:layout_marginBottom="120dp"
         android:text="@string/vegetable_not_detected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
