@@ -15,9 +15,13 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldPath
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.sayursehat.paterai.R
 import com.sayursehat.paterai.databinding.FragmentSignInBinding
+import com.sayursehat.paterai.model.User
 import com.sayursehat.paterai.ui.market.MarketActivity
 
 class SignInFragment : Fragment() {
@@ -26,6 +30,7 @@ class SignInFragment : Fragment() {
     private val binding get() = _binding
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,8 +49,8 @@ class SignInFragment : Fragment() {
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
-
         auth = Firebase.auth
+        db = Firebase.firestore
 
         binding?.btnSignInGoogle?.setOnClickListener {
             googleSignIn()
@@ -81,6 +86,20 @@ class SignInFragment : Fragment() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
+                    val collectionRef = db.collection("users")
+                    collectionRef.whereEqualTo(FieldPath.documentId(), auth.uid)
+                        .get()
+                        .addOnSuccessListener { result ->
+                            if (result.isEmpty) {
+                                auth.uid?.let {
+                                    val data = User(it)
+                                    collectionRef.document(it).set(data)
+                                }
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+
+                        }
                     val intent = Intent(activity, MarketActivity::class.java)
                     startActivity(intent)
                     requireActivity().finish()

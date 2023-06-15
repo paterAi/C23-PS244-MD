@@ -10,7 +10,8 @@ import com.sayursehat.paterai.model.Vegetable
 import com.sayursehat.paterai.utils.Utils
 
 class ListHomeProductAdapter(
-    private val listProduct: List<Vegetable>
+    private val listProduct: List<Vegetable>,
+    private val onClick: (Vegetable) -> Unit = {}
 ) :
     RecyclerView.Adapter<ListHomeProductAdapter.ViewHolder>() {
 
@@ -22,9 +23,16 @@ class ListHomeProductAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.apply {
-            imgVegetable.setImageResource(listProduct[position].image)
+            Glide.with(holder.itemView.context).load(listProduct[position].photoUrl)
+                .into(imgVegetable)
             tvNameVegetable.text = listProduct[position].name
-            tvPriceVegetable.text = Utils.convertToIDRFormat(listProduct[position].price)
+            tvPriceVegetable.text = listProduct[position].price?.let {
+                Utils.convertToIDRFormat(it)
+            }
+            tvWeightVegetable.text = listProduct[position].weight
+            btnAddProduct.setOnClickListener {
+                onClick(listProduct[position])
+            }
         }
 
     }

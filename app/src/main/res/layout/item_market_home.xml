@@ -23,9 +23,29 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
+            android:id="@+id/tv_weight_vegetable"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/secondary"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="2dp"
+            android:text="500 g"
+            android:textAlignment="center"
+            app:autoSizeMaxTextSize="14sp"
+            app:autoSizeMinTextSize="5sp"
+            app:autoSizeStepGranularity="1sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="@+id/img_vegetable"
+            app:layout_constraintEnd_toEndOf="@+id/img_vegetable" />
+
+        <TextView
             android:id="@+id/tv_name_vegetable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_semi_bold"
             android:text="Food Name"
             android:textSize="13sp"
             app:layout_constraintStart_toStartOf="@+id/img_vegetable"
@@ -35,6 +55,7 @@
             android:id="@+id/tv_price_vegetable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_semi_bold"
             android:text="Rp 19.500"
             android:textColor="@color/primary"
             android:textSize="12sp"
@@ -46,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
-            android:text="Palembang"
+            android:text="Jakarta"
             android:textColor="@color/grey"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/img_icon_location"

@@ -29,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:fontFamily="@font/montserrat_bold"
             android:text="Name"
             app:layout_constraintBottom_toTopOf="@+id/img_home_location"
             app:layout_constraintEnd_toStartOf="@+id/img_home_user"
@@ -51,6 +52,7 @@
             android:id="@+id/tv_home_location"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:fontFamily="@font/montserrat_semi_bold"
             android:gravity="center_vertical"
             android:text="Location"
             android:textSize="10sp"
@@ -78,6 +80,7 @@
                 android:id="@+id/edt_home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semi_bold"
                 tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,6 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:fontFamily="@font/montserrat_semi_bold"
             android:text="Special hari ini!"
             app:layout_constraintStart_toStartOf="@+id/img_home_carousel"
             app:layout_constraintTop_toBottomOf="@+id/img_home_carousel" />
@@ -104,9 +108,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_home_product"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:overScrollMode="never"
+            android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
+            android:overScrollMode="never"
             app:layout_constraintEnd_toEndOf="@+id/img_home_carousel"
             app:layout_constraintStart_toStartOf="@+id/tv_home_1"
             app:layout_constraintTop_toBottomOf="@+id/tv_home_1"
