@@ -25,7 +25,7 @@ class TestModelActivity : AppCompatActivity() {
         setContentView(R.layout.activity_test_model)
 
         val drawableId = R.drawable.img_papaya
-        val image = BitmapFactory.decodeResource(resources, drawableId)
+        val imageInput = BitmapFactory.decodeResource(resources, drawableId)
 
         val conditions = CustomModelDownloadConditions.Builder()
             .requireWifi()  // Also possible: .requireCharging() and .requireDeviceIdle()
@@ -48,7 +48,7 @@ class TestModelActivity : AppCompatActivity() {
 
                 try {
                     // model input
-                    val bitmap = Bitmap.createScaledBitmap(image, 224, 224, true)
+                    val bitmap = Bitmap.createScaledBitmap(imageInput, 224, 224, true)
                     val input = ByteBuffer.allocateDirect(224 * 224 * 3 * 4).order(ByteOrder.nativeOrder())
                     for (y in 0 until 224) {
                         for (x in 0 until 224) {
