@@ -55,8 +55,8 @@ dependencies {
     implementation 'androidx.datastore:datastore-preferences:1.0.0'
 
     //Navigation Component
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
 
     //ViewModel & LiveData
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
@@ -64,7 +64,7 @@ dependencies {
 
     //Android KTX
     implementation 'androidx.activity:activity-ktx:1.7.2'
-    implementation 'androidx.fragment:fragment-ktx:1.5.7'
+    implementation 'androidx.fragment:fragment-ktx:1.6.0'
 
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
@@ -84,9 +84,14 @@ dependencies {
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:32.0.0')
     implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.android.gms:play-services-auth:20.5.0'
 
     //Facebook
     implementation 'com.facebook.android:facebook-login:latest.release'
+
+    //ML Kit
+    implementation 'com.google.mlkit:image-labeling-custom:17.0.1'
+    implementation 'com.google.mlkit:linkfirebase:17.0.0'
 
 }
