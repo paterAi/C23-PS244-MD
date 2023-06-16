@@ -14,6 +14,7 @@ import com.google.android.material.shape.MaterialShapeDrawable
 import com.sayursehat.paterai.R
 import com.sayursehat.paterai.databinding.ActivityMarketBinding
 import com.sayursehat.paterai.ui.market.camera.CameraActivity
+import com.sayursehat.paterai.ui.market.cart.CartMarketActivity
 import com.sayursehat.paterai.ui.market.product.detail.DetailProductMarketActivity
 
 class MarketActivity : AppCompatActivity() {
@@ -41,6 +42,10 @@ class MarketActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
         binding.fabScan.setOnClickListener {startCameraX()}
+        binding.fabCart.setOnClickListener {
+            val intent = Intent(this, CartMarketActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun startCameraX(){

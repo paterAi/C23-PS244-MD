@@ -26,6 +26,7 @@ import com.sayursehat.paterai.model.Product
 import com.sayursehat.paterai.model.User
 import com.sayursehat.paterai.model.Vegetable
 import com.sayursehat.paterai.ui.market.maps.MapsActivity
+import com.sayursehat.paterai.ui.market.product.detail.DetailProductMarketActivity
 
 class HomeMarketFragment : Fragment() {
 
@@ -89,38 +90,11 @@ class HomeMarketFragment : Fragment() {
     }
 
     private fun setListProductData(listProduct: List<Vegetable>) {
-        val adapter = ListHomeProductAdapter(listProduct) { vegetable ->
-
-            val totalPriceProduct = cart.listProduct.find { it.id == vegetable.id }
-
-//            val updates = hashMapOf(
-//                "listProduct" to FieldValue.arrayUnion(
-//                    {
-//                        "count" : FieldValue.increment(1),
-//                        "id" : vegetable.id,
-//                        "name" : vegetable.name,
-//                        "photoUrl" : vegetable.photoUrl,
-//                        "price" : vegetable.price,
-//                        "totalPrice" : ((cart.listProduct.find { it.id == vegetable.id }?.totalPrice
-//                        ?: vegetable.price)?.plus(vegetable.price as Int)),
-//                        "weight" : vegetable.weight
-//                    }
-//                ),
-//            )
-
-//            Log.d("HomeMarket", updates.toString())
-//
-//            auth.uid?.let {
-//                db.collection("users")
-//                    .document(it)
-//                    .update(
-//                        "cart",
-//                        {
-//                            updates
-//                        }
-//                    )
-//            }
-        }
+        val adapter = ListHomeProductAdapter(listProduct, onClick = {
+            val intent = Intent(requireActivity(), DetailProductMarketActivity::class.java)
+            intent.putExtra(DetailProductMarketActivity.EXTRA_VEGETABLE, it)
+            startActivity(intent)
+        })
         binding?.rvHomeProduct?.adapter = adapter
     }
 
