@@ -20,7 +20,6 @@ class OnboardingActivity : AppCompatActivity() {
 
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
 
         val pref = OnboardingPreferences.getInstance(dataStore)
         val factory = ViewModelFactory(pref)

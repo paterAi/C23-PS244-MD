@@ -1,60 +1,101 @@
 package com.sayursehat.paterai.ui.market.product
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import com.sayursehat.paterai.R
+import com.sayursehat.paterai.adapter.ListHomeProductAdapter
+import com.sayursehat.paterai.databinding.FragmentHomeMarketBinding
+import com.sayursehat.paterai.databinding.FragmentProductMarketBinding
+import com.sayursehat.paterai.model.Vegetable
+import com.sayursehat.paterai.ui.market.product.detail.DetailProductMarketActivity
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProductMarketFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProductMarketFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentProductMarketBinding? = null
+    private val binding get() = _binding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
+    private var data: List<Vegetable> = listOf()
+    private var dataFilter: List<Vegetable> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_product_market, container, false)
+        _binding = FragmentProductMarketBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProductMarketFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProductMarketFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        auth = Firebase.auth
+        db = Firebase.firestore
+        setupView()
+    }
+
+    private fun setupView() {
+        val layoutManager = GridLayoutManager(activity, 2)
+        binding?.apply {
+            rvProduct.layoutManager = layoutManager
+            edtProduct.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
                 }
+
+                override fun onTextChanged(c: CharSequence, p1: Int, p2: Int, p3: Int) {
+                    dataFilter = data.filter {
+                        it.name?.contains(c, ignoreCase = true) ?: false
+                    }
+                    setListProductData(dataFilter)
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+
+                }
+
+
+            })
+        }
+
+        db.collection("vegetables")
+            .get()
+            .addOnSuccessListener { result ->
+                val listVegetable = arrayListOf<Vegetable>()
+                for (document in result) {
+                    val data = document.toObject<Vegetable>()
+                    listVegetable.add(data)
+                }
+                data = listVegetable
+                setListProductData(data)
             }
     }
+
+    private fun setListProductData(listProduct: List<Vegetable>) {
+        val adapter = ListHomeProductAdapter(listProduct, onClick = {
+            val intent = Intent(requireActivity(), DetailProductMarketActivity::class.java)
+            intent.putExtra(DetailProductMarketActivity.EXTRA_VEGETABLE, it)
+            startActivity(intent)
+        })
+        binding?.rvProduct?.adapter = adapter
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+
 }

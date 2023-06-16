@@ -11,7 +11,8 @@ import com.sayursehat.paterai.utils.Utils
 
 class ListHomeProductAdapter(
     private val listProduct: List<Vegetable>,
-    private val onClick: (Vegetable) -> Unit = {}
+    private val onClick: (Vegetable) -> Unit = {},
+    private val onAdd: (Vegetable) -> Unit = {}
 ) :
     RecyclerView.Adapter<ListHomeProductAdapter.ViewHolder>() {
 
@@ -31,6 +32,9 @@ class ListHomeProductAdapter(
             }
             tvWeightVegetable.text = listProduct[position].weight
             btnAddProduct.setOnClickListener {
+                onAdd(listProduct[position])
+            }
+            holder.itemView.setOnClickListener {
                 onClick(listProduct[position])
             }
         }

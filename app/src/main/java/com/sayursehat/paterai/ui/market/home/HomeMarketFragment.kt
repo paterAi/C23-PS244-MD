@@ -45,7 +45,6 @@ class HomeMarketFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.hide()
         auth = Firebase.auth
         db = Firebase.firestore
 

@@ -1,5 +1,6 @@
 package com.sayursehat.paterai.ui.market
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,8 @@ import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.sayursehat.paterai.R
 import com.sayursehat.paterai.databinding.ActivityMarketBinding
+import com.sayursehat.paterai.ui.market.camera.CameraActivity
+import com.sayursehat.paterai.ui.market.product.detail.DetailProductMarketActivity
 
 class MarketActivity : AppCompatActivity() {
 
@@ -27,15 +30,6 @@ class MarketActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_activity_market)
 
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home,
-                R.id.navigation_product,
-                R.id.navigation_order,
-                R.id.navigation_profile
-            )
-        )
-
         val radius = resources.getDimension(R.dimen.corner_radius_bottom_bar)
         val bottomBarBackground = binding.bottomNavAppbar.background as MaterialShapeDrawable
 
@@ -44,7 +38,13 @@ class MarketActivity : AppCompatActivity() {
             .setTopLeftCorner(CornerFamily.ROUNDED, radius)
             .setTopRightCorner(CornerFamily.ROUNDED, radius)
             .build()
-        setupActionBarWithNavController(navController, appBarConfiguration)
+
         navView.setupWithNavController(navController)
+        binding.fabScan.setOnClickListener {startCameraX()}
+    }
+
+    private fun startCameraX(){
+        val intent = Intent(this, CameraActivity::class.java)
+        startActivity(intent)
     }
 }
